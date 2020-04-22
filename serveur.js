@@ -4,15 +4,12 @@ const path = require('path'); // Importation de path
 const app = express(); // Initialisation de app 
 const PORT = process.env.PORT || 5000; // Initialisation du port avec le fichier env ou 5000 par défaut.
 
-/*
-// Gestion de la route / (la racine)
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// Récupération de la vidéo via la route /video
+app.get('/video', (req, res) => {
+    res.sendFile(path.join(__dirname, 'videos', 'video.mp4'));
 });
-*/
 
-// Mise en place d'un dossier statique
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, 'public'))); // Mise en place d'un dossier statique
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`)); // Lancement du serveur, lance la fonction en paramètre au passage.
+
