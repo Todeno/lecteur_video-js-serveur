@@ -1,15 +1,26 @@
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test lecteur vidéo</title>
+    <title>Lecteur vidéo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Lecteur vidéo</h1>
-
     <div class="container">
-        <video src="video.mp4" class="video"></video><!-- On prend la vidéo stockée dans public/ (pour l'instant) -->
+        <h1>Lecteur vidéo</h1>
+        <div class="player_interface">
+            <video src="video.mp4" class="video"></video><!-- On prend la vidéo stockée dans public/ (pour l'instant) -->
+
+            <div class="controls">
+                <div class="buttons">
+                    <button id="mute">Mute</button>
+                    <input type="range" id="volumeSlider" type="range" min="0" max="100" value="50" step="1"><!-- Barre de volume allant de 0 à 100 (de 1 en 1) qui commence à 50 -->
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="index.js"></script>
