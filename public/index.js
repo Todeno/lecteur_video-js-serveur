@@ -2,9 +2,24 @@ let video = document.querySelector('.video'); // Récupération de la balise vid
 let bouton_mute = document.getElementById('mute'); // Récupération de la balise correspondant au bouton mute de l'html (id="mute")
 let volume_slider = document.getElementById('volumeSlider'); // Récupération de la balise correspondant au volume slider (id="volumeSlider")
 let progression = document.getElementById('progression'); // Récupération de la balise correspondant à la barre de progression (id="progression")
+let bouton_search = document.getElementById('bouton_searchVideo'); // Récupération du bouton de recherche de vidéo (id="bouton_searchVideo")
+let player_interface = document.querySelector('.player_interface'); // Récupération de la balise vidéo de l'html (class="player_interface")
+let input_nom = document.getElementById('input_nomVideo'); // Récupération du textfield de recherche de vidéo (id="input_nomVideo")
 
-video.play(); // Lancement de la vidéo
-video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
+// Ajout d'un evenement au bouton de recherche de vidéo
+bouton_search.addEventListener
+(
+    'click', function()
+    {
+        video.attributes.src.value = "http://localhost:5000/videos/"+input_nom.value; // Attribution d'une valeur à l'attribut src de la vidéo
+        player_interface.attributes.style.value = 'display:flex'; // Affichage du lecteur
+        bouton_search.attributes.style.value = 'display:none'; // On cache ensuite le bouton
+        input_nom.value=""; // Vidage du textfield (en cas de refresh)
+        input_nom.attributes.style.value = 'display:none'; // Puis on cache le textfield
+        video.play(); // Lancement de la vidéo
+        video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
+    }
+);
 
 // Ajout d'un evenement au bouton mute
 bouton_mute.addEventListener
