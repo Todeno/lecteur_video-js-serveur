@@ -1,6 +1,7 @@
 let video = document.querySelector('.video'); // Récupération de la balise vidéo de l'html (class="video")
 let bouton_mute = document.getElementById('mute'); // Récupération de la balise correspondant au bouton mute de l'html (id="mute")
-let volume_slider = document.getElementById('volumeSlider');
+let volume_slider = document.getElementById('volumeSlider'); // Récupération de la balise correspondant au volume slider (id="volumeSlider")
+let progression = document.getElementById('progression'); // Récupération de la balise correspondant à la barre de progression (id="progression")
 
 video.play(); // Lancement de la vidéo
 video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
@@ -29,5 +30,15 @@ volume_slider.addEventListener
     'change', function()
     {
         video.volume = volume_slider.value / 100; // Suite à un changement de valeur, le volume de la vidéo devient égale à la nouvelle valeur (divisé par 100 car on veut %)
+    }
+);
+
+// Ajout d'un evenement à la vidéo
+video.addEventListener
+(
+    'timeupdate', function()
+    {
+        let position = video.currentTime / video.duration;
+        progression.style.width = (video.currentTime / video.duration)* 100 + '%'; // La barre prend la taille du temps écoulé en %
     }
 );

@@ -57,3 +57,18 @@ video
     position: relative;
     top: -5px;
 }
+
+#timebar
+{
+    height: 5px;
+    width: 100%;
+    background-color: #13293f;
+    position: absolute;
+}
+
+#progression
+{
+    background-color: yellow;
+    height: 100%;
+    width: 0px;
+}
