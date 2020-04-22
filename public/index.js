@@ -11,7 +11,7 @@ bouton_search.addEventListener
 (
     'click', function()
     {
-        video.attributes.src.value = "http://localhost:5000/video"; // Attribution d'une valeur à l'attribut src de la vidéo
+        video.attributes.src.value = "http://localhost:5000/videos/video"; // Attribution d'une valeur à l'attribut src de la vidéo
         player_interface.attributes.style.value = 'display:flex'; // Affichage du lecteur
         bouton_search.attributes.style.value = 'display:none'; // On cache ensuite le bouton
         video.play(); // Lancement de la vidéo
