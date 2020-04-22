@@ -1,9 +1,9 @@
 let video = document.querySelector('.video'); // Récupération de la balise vidéo de l'html (class="video")
 let bouton_mute = document.getElementById('mute'); // Récupération de la balise correspondant au bouton mute de l'html (id="mute")
-
+let volume_slider = document.getElementById('volumeSlider');
 
 video.play(); // Lancement de la vidéo
-
+video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
 
 // Ajout d'un evenement au bouton mute
 bouton_mute.addEventListener
@@ -21,4 +21,13 @@ bouton_mute.addEventListener
             bouton_mute.innerHTML = "Démute"; // Puis change le texte du bouton
         }
     }
-)
+);
+
+// Ajout d'un evenement au volume slider
+volume_slider.addEventListener
+(
+    'change', function()
+    {
+        video.volume = volume_slider.value / 100; // Suite à un changement de valeur, le volume de la vidéo devient égale à la nouvelle valeur (divisé par 100 car on veut %)
+    }
+);
