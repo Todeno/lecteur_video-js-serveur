@@ -1,0 +1,27 @@
+{
+  "name": "test-lecteur_video-js-serveur",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node serveur",
+    "dev": "nodemon serveur"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Todeno@github.com/Todeno/test-lecteur_video-js-serveur.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Todeno/test-lecteur_video-js-serveur/issues"
+  },
+  "homepage": "https://github.com/Todeno/test-lecteur_video-js-serveur#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
