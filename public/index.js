@@ -7,10 +7,11 @@ let player_interface = document.querySelector('.player_interface'); // Récupér
 let input_nom = document.getElementById('input_nomVideo'); // Récupération du textfield de recherche de vidéo (id="input_nomVideo")
 let input_code = document.getElementById('input_codeVideo'); // Récupération du textfield correspondant au code secret de la vidéo (id="input_codeVideo")
 let text_error = document.querySelector('.error'); // Récupération du texte d'erreur (class="class=error")
+let bouton_fullscreen = document.getElementById('fullscreen'); // Récupération de la balise correspondant au bouton fullscreen de l'html (id="fullscreen")
 
 
 const http = new XMLHttpRequest(); // Déclaration de l'élément http
-
+let fullscreen = false; // Il nous faut traquer l'état du mode plein écran
 
 input_nom.focus(); // A l'arrivé sur la page, le champ est selectionné
 
@@ -54,6 +55,37 @@ bouton_search.addEventListener
                 else if(http.responseText == "err") text_error.style = "display:flex";
             }
         }        
+    }
+);
+
+// Ajout d'un évènement lors du passage de plein écran à fenêtré (ou l'inverse) pour player_interface
+player_interface.addEventListener("fullscreenchange", function() {
+        if(fullscreen) // Si on est en plein écran
+        {
+            bouton_fullscreen.innerHTML = "Fullscreen"; // Ecrit fullscreen
+            fullscreen = false; // Passe fullscreen à false
+        }
+        else
+        {
+            bouton_fullscreen.innerHTML = "Windowed"; // Ecrit windowed
+            fullscreen = true; // Passe fullscreen à true
+        }
+    }
+);
+
+// Ajout d'un evenement au bouton fullscreen
+bouton_fullscreen.addEventListener
+(
+    'click', function()
+    {
+        if(fullscreen) // Si on est en plein écran
+        {
+            // player_interface.exitFullScreen(); // Passe en fenêtré
+        }
+        else // Si on est en fenêtré
+        {
+            player_interface.requestFullscreen(); // Passe en plein écran
+        }
     }
 );
 
