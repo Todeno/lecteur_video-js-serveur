@@ -6,6 +6,7 @@ let bouton_search = document.getElementById('bouton_searchVideo'); // Récupéra
 let player_interface = document.querySelector('.player_interface'); // Récupération de la balise vidéo de l'html (class="player_interface")
 let input_nom = document.getElementById('input_nomVideo'); // Récupération du textfield de recherche de vidéo (id="input_nomVideo")
 let input_code = document.getElementById('input_codeVideo'); // Récupération du textfield correspondant au code secret de la vidéo (id="input_codeVideo")
+let text_error = document.querySelector('.error'); // Récupération du text d'erreur (class="class=error")
 
 
 const http = new XMLHttpRequest(); // Déclaration de l'élément http
@@ -25,6 +26,7 @@ bouton_search.addEventListener
                 {
                     http.abort(); // Fermeture de la requete préalablement ouverte
                     video.attributes.src.value = "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value; // Attribution d'une valeur à l'attribut src de la vidéo
+                    text_error.style = "display:none";
                     player_interface.attributes.style.value = 'display:flex'; // Affichage du lecteur
                     bouton_search.attributes.style.value = 'display:none'; // On cache ensuite le bouton
                     input_nom.value=""; // Vidage du textfield (en cas de refresh)
@@ -33,6 +35,10 @@ bouton_search.addEventListener
                     input_code.attributes.style.value = 'display:none'; // de même
                     video.play(); // Lancement de la vidéo
                     video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
+                }
+                else
+                {
+                    text_error.style = "display:flex";
                 }
             }
         }        
