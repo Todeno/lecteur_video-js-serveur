@@ -17,7 +17,7 @@ bouton_search.addEventListener
 (
     'click', function()
     {
-        var la_page_avec_fichier_video = http.open('GET', "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value); // On récupère la page renvoyant le fichier vidéo (ou non)
+        let la_page_avec_fichier_video = http.open('GET', "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value); // On récupère la page renvoyant le fichier vidéo (ou non)
         http.send(); // On envoie la requete
         http.onreadystatechange = function(){ // Lorsque l'état change
             if(this.readyState=4 && this.status==200) // Si la requête est terminée et ne renvoie pas d'erreur

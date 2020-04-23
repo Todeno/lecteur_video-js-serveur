@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 5000; // Initialisation du port avec le fichier
 
 // Récupération de la vidéo via la route /video
 app.get('/videos/:nom/:code', (req, res) => {
-        var les_videos = fs.readFileSync(new URL('file:'+path.join(__dirname, 'videos.json'))); // Récupération du fichier videos.json
+        let les_videos = fs.readFileSync(new URL('file:'+path.join(__dirname, 'videos.json'))); // Récupération du fichier videos.json
         les_videos = JSON.parse(les_videos); // Transformation en chaîne de caractères
-        var good = false; // Création d'une variable permettant de savoir si il y a ou non correspondance (pour savoir quoi retourné)
+        let good = false; // Création d'une variable permettant de savoir si il y a ou non correspondance (pour savoir quoi retourné)
         for(i=0; i<les_videos.length; i++)
         {
             if(les_videos[i].nom == req.params.nom) // Si le nom correspond
