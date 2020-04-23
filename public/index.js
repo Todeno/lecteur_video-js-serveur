@@ -12,6 +12,13 @@ let text_error = document.querySelector('.error'); // Récupération du texte d'
 const http = new XMLHttpRequest(); // Déclaration de l'élément http
 
 
+// Ajout d'un évènement en cas de pression sur entré dans le champ pour le code secret
+input_code.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) bouton_search.click(); // Si la touche 13 (entré) est pressé, clique sur le bouton
+  }
+); 
+
+
 // Ajout d'un evenement au bouton de recherche de vidéo
 bouton_search.addEventListener
 (
