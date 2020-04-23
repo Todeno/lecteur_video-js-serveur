@@ -1,0 +1,79 @@
+body
+{
+    background-color: #19334d;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1
+{
+    color: white;
+    text-align: center;
+}
+
+video
+{
+    width: 100%;
+}
+
+.controls
+{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #19334d;
+    opacity: 0.5;
+    transform: translateY(100%) translateY(-3px);
+    transition: all 0.1s;
+}
+
+.player_interface
+{
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.player_interface:hover .controls 
+{
+    transform: translateY(0);
+}
+
+.buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+#mute {
+    position: relative;
+    top: -5px;
+}
+
+#timebar
+{
+    height: 5px;
+    width: 100%;
+    background-color: #13293f;
+    position: absolute;
+}
+
+#progression
+{
+    background-color: yellow;
+    height: 100%;
+    width: 0px;
+}
+
+.error
+{
+    color: lightcoral;
+}
