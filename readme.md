@@ -11,3 +11,11 @@ Création d'un serveur qui diffuse une vidéo dans le navigateur d'un client sui
 
 ## Lancement en production
 `npm run start`
+
+
+## Vidéos disponibles
+Chaque vidéo necessite un code d'accès (un genre de mot de passe) pour être visionnée :
+- La vidéo "video" a "tardis" pour code.
+- La vidéo "blizzard" a "wow" pour code.
+- La vidéo "decompte" a "oldmovie" pour code.
+- La vidéo "ubuntu" a "windows" pour code.

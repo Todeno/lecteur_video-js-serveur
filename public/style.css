@@ -72,3 +72,8 @@ video
     height: 100%;
     width: 0px;
 }
+
+.error
+{
+    color: lightcoral;
+}
