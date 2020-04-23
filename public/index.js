@@ -22,7 +22,7 @@ bouton_search.addEventListener
         http.onreadystatechange = function(){ // Lorsque l'état change
             if(this.readyState=4 && this.status==200) // Si la requête est terminée et ne renvoie pas d'erreur
             {
-                if(http.responseText.length > 0) // Si la réponse est supérieur à 0 (si un fichier vidéo a été renvoyé)
+                if(http.responseText.length > 3) // Si la réponse est supérieur à 0 (si un fichier vidéo a été renvoyé)
                 {
                     http.abort(); // Fermeture de la requete préalablement ouverte
                     video.attributes.src.value = "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value; // Attribution d'une valeur à l'attribut src de la vidéo
@@ -38,7 +38,7 @@ bouton_search.addEventListener
                 }
                 else
                 {
-                    text_error.style = "display:flex";
+                    if(http.responseText == "err") text_error.style = "display:flex";
                 }
             }
         }        

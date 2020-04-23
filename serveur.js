@@ -21,7 +21,7 @@ app.get('/videos/:nom/:code', (req, res) => {
             }
         }
         if(good) res.sendFile(path.join(__dirname, 'videos', req.params.nom+'.mp4')); // Si l'accès est autorisé renvoie la vidéo
-            else res.send(""); // Sinon renvoie du vide
+            else res.send("err"); // Sinon renvoie "err"
     }
 );
 
