@@ -8,20 +8,34 @@ let input_nom = document.getElementById('input_nomVideo'); // Récupération du 
 let input_code = document.getElementById('input_codeVideo'); // Récupération du textfield correspondant au code secret de la vidéo (id="input_codeVideo")
 
 
+const http = new XMLHttpRequest(); // Déclaration de l'élément http
+
+
 // Ajout d'un evenement au bouton de recherche de vidéo
 bouton_search.addEventListener
 (
     'click', function()
     {
-        video.attributes.src.value = "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value; // Attribution d'une valeur à l'attribut src de la vidéo
-        player_interface.attributes.style.value = 'display:flex'; // Affichage du lecteur
-        bouton_search.attributes.style.value = 'display:none'; // On cache ensuite le bouton
-        input_nom.value=""; // Vidage du textfield (en cas de refresh)
-        input_code.value=""; // de même
-        input_nom.attributes.style.value = 'display:none'; // Puis on cache le textfield
-        input_code.attributes.style.value = 'display:none'; // de même
-        video.play(); // Lancement de la vidéo
-        video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
+        var la_page_avec_fichier_video = http.open('GET', "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value); // On récupère la page renvoyant le fichier vidéo (ou non)
+        http.send(); // On envoie la requete
+        http.onreadystatechange = function(){ // Lorsque l'état change
+            if(this.readyState=4 && this.status==200) // Si la requête est terminée et ne renvoie pas d'erreur
+            {
+                if(http.responseText.length > 0) // Si la réponse est supérieur à 0 (si un fichier vidéo a été renvoyé)
+                {
+                    http.abort(); // Fermeture de la requete préalablement ouverte
+                    video.attributes.src.value = "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value; // Attribution d'une valeur à l'attribut src de la vidéo
+                    player_interface.attributes.style.value = 'display:flex'; // Affichage du lecteur
+                    bouton_search.attributes.style.value = 'display:none'; // On cache ensuite le bouton
+                    input_nom.value=""; // Vidage du textfield (en cas de refresh)
+                    input_code.value=""; // de même
+                    input_nom.attributes.style.value = 'display:none'; // Puis on cache le textfield
+                    input_code.attributes.style.value = 'display:none'; // de même
+                    video.play(); // Lancement de la vidéo
+                    video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
+                }
+            }
+        }        
     }
 );
 
