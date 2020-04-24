@@ -80,7 +80,7 @@ bouton_fullscreen.addEventListener
     {
         if(fullscreen) // Si on est en plein écran
         {
-            // player_interface.exitFullScreen(); // Passe en fenêtré
+            document.exitFullscreen(); // Passe en fenêtré            
         }
         else // Si on est en fenêtré
         {
