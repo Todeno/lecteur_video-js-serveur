@@ -1,3 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
 let video = document.querySelector('.video'); // Récupération de la balise vidéo de l'html (class="video")
 let bouton_mute = document.getElementById('mute'); // Récupération de la balise correspondant au bouton mute de l'html (id="mute")
 let volume_slider = document.getElementById('volumeSlider'); // Récupération de la balise correspondant au volume slider (id="volumeSlider")
@@ -33,15 +45,15 @@ bouton_search.addEventListener
 (
     'click', function()
     {
-        let la_page_avec_fichier_video = http.open('GET', "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value); // On récupère la page renvoyant le fichier vidéo (ou non)
+        http.open('GET', "videos/"+input_nom.value+"/"+input_code.value); // On récupère la page renvoyant le fichier vidéo (ou non)
         http.send(); // On envoie la requete
         http.onreadystatechange = function(){ // Lorsque l'état change
-            if(this.readyState=4 && this.status==200) // Si la requête est terminée et ne renvoie pas d'erreur
+            if(this.readyState===4 && this.status===200) // Si la requête est terminée et ne renvoie pas d'erreur
             {
                 if(http.responseText.length > 3) // Si la réponse est supérieur à 0 (si un fichier vidéo a été renvoyé)
                 {
                     http.abort(); // Fermeture de la requete préalablement ouverte
-                    video.attributes.src.value = "http://localhost:5000/videos/"+input_nom.value+"/"+input_code.value; // Attribution d'une valeur à l'attribut src de la vidéo
+                    video.attributes.src.value = "videos/"+input_nom.value+"/"+input_code.value; // Attribution d'une valeur à l'attribut src de la vidéo
                     text_error.style = "display:none";
                     player_interface.attributes.style.value = 'display:flex'; // Affichage du lecteur
                     bouton_search.attributes.style.value = 'display:none'; // On cache ensuite le bouton
@@ -52,7 +64,7 @@ bouton_search.addEventListener
                     video.play(); // Lancement de la vidéo
                     video.volume = 0.5; // Initialisation du volume à 50% (en accord avec la valeur initiale du volume slider)
                 }
-                else if(http.responseText == "err") text_error.style = "display:flex";
+                else if(http.responseText === "err") text_error.style = "display:flex";
             }
         }        
     }
@@ -121,7 +133,6 @@ video.addEventListener
 (
     'timeupdate', function()
     {
-        let position = video.currentTime / video.duration;
         progression.style.width = (video.currentTime / video.duration)* 100 + '%'; // La barre prend la taille du temps écoulé en %
     }
 );

@@ -22,6 +22,4 @@ app.get('/videos/:nom/:code', (req, res) => {
     }
 );
 
-app.use(express.static(path.join(__dirname, 'public'))); // Mise en place d'un dossier statique
-
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`)); // Lancement du serveur, lance la fonction en paramètre au passage.
