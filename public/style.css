@@ -46,16 +46,19 @@ video
     transform: translateY(0);
 }
 
-.buttons button {
+.buttons
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.buttons button 
+{
     background: none;
     border: none;
     cursor: pointer;
     color: #fff;
-}
-
-#mute {
-    position: relative;
-    top: -5px;
 }
 
 #timebar
@@ -76,4 +79,9 @@ video
 .error
 {
     color: lightcoral;
+}
+
+.sound
+{
+    display: flex;
 }
