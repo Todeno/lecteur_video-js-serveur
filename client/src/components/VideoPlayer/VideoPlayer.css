@@ -1,0 +1,65 @@
+#rjsvp_video
+{
+    width: 100%;
+}
+
+#rjsvp_controls
+{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #19334d;
+    opacity: 0.5;
+    transform: translateY(100%) translateY(-3px);
+    transition: all 0.1s;
+}
+
+#rjsvp_player_interface
+{
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#rjsvp_player_interface:hover #rjsvp_controls 
+{
+    transform: translateY(0);
+}
+
+#rjsvp_buttons
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#rjsvp_buttons button 
+{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+#rjsvp_timebar
+{
+    height: 5px;
+    width: 100%;
+    background-color: #13293f;
+    position: absolute;
+}
+
+#rjsvp_progression
+{
+    background-color: yellow;
+    height: 100%;
+    width: 0px;
+}
+
+#rjsvp_sound
+{
+    display: flex;
+}

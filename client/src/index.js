@@ -10,20 +10,16 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-let video = document.querySelector('.video'); // Récupération de la balise vidéo de l'html (class="video")
-let bouton_mute = document.getElementById('mute'); // Récupération de la balise correspondant au bouton mute de l'html (id="mute")
-let volume_slider = document.getElementById('volumeSlider'); // Récupération de la balise correspondant au volume slider (id="volumeSlider")
-let progression = document.getElementById('progression'); // Récupération de la balise correspondant à la barre de progression (id="progression")
+let video = document.getElementById('rjsvp_video'); // Récupération de la balise vidéo de l'html (class="video")
 let bouton_search = document.getElementById('bouton_searchVideo'); // Récupération du bouton de recherche de vidéo (id="bouton_searchVideo")
-let player_interface = document.querySelector('.player_interface'); // Récupération de la balise vidéo de l'html (class="player_interface")
 let input_nom = document.getElementById('input_nomVideo'); // Récupération du textfield de recherche de vidéo (id="input_nomVideo")
 let input_code = document.getElementById('input_codeVideo'); // Récupération du textfield correspondant au code secret de la vidéo (id="input_codeVideo")
 let text_error = document.querySelector('.error'); // Récupération du texte d'erreur (class="class=error")
-let bouton_fullscreen = document.getElementById('fullscreen'); // Récupération de la balise correspondant au bouton fullscreen de l'html (id="fullscreen")
-
+let player_interface = document.getElementById('rjsvp_player_interface'); // Récupération de la div contenant le lecteur
 
 const http = new XMLHttpRequest(); // Déclaration de l'élément http
-let fullscreen = false; // Il nous faut traquer l'état du mode plein écran
+
+player_interface.attributes.style.value = "display:none";
 
 input_nom.focus(); // A l'arrivé sur la page, le champ est selectionné
 
@@ -67,72 +63,5 @@ bouton_search.addEventListener
                 else if(http.responseText === "err") text_error.style = "display:flex";
             }
         }        
-    }
-);
-
-// Ajout d'un évènement lors du passage de plein écran à fenêtré (ou l'inverse) pour player_interface
-player_interface.addEventListener("fullscreenchange", function() {
-        if(fullscreen) // Si on est en plein écran
-        {
-            bouton_fullscreen.innerHTML = "Fullscreen"; // Ecrit fullscreen
-            fullscreen = false; // Passe fullscreen à false
-        }
-        else
-        {
-            bouton_fullscreen.innerHTML = "Windowed"; // Ecrit windowed
-            fullscreen = true; // Passe fullscreen à true
-        }
-    }
-);
-
-// Ajout d'un evenement au bouton fullscreen
-bouton_fullscreen.addEventListener
-(
-    'click', function()
-    {
-        if(fullscreen) // Si on est en plein écran
-        {
-            document.exitFullscreen(); // Passe en fenêtré            
-        }
-        else // Si on est en fenêtré
-        {
-            player_interface.requestFullscreen(); // Passe en plein écran
-        }
-    }
-);
-
-// Ajout d'un evenement au bouton mute
-bouton_mute.addEventListener
-(
-    'click', function()
-    {
-        if(video.muted) // Si la vidéo est déjà muté
-        {
-            video.muted = false; // La démute
-            bouton_mute.innerHTML = "Mute"; // Puis change le texte du bouton
-        } 
-        else // Si le son de la vidéo est toujours activé
-        {
-            video.muted = true; // La mute
-            bouton_mute.innerHTML = "Démute"; // Puis change le texte du bouton
-        }
-    }
-);
-
-// Ajout d'un evenement au volume slider
-volume_slider.addEventListener
-(
-    'change', function()
-    {
-        video.volume = volume_slider.value / 100; // Suite à un changement de valeur, le volume de la vidéo devient égale à la nouvelle valeur (divisé par 100 car on veut %)
-    }
-);
-
-// Ajout d'un evenement à la vidéo
-video.addEventListener
-(
-    'timeupdate', function()
-    {
-        progression.style.width = (video.currentTime / video.duration)* 100 + '%'; // La barre prend la taille du temps écoulé en %
     }
 );

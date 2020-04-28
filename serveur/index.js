@@ -3,7 +3,7 @@ const path = require('path'); // Importation de path
 const fs = require('fs'); // Importation de fs (File System)
 
 const app = express(); // Initialisation de app 
-const PORT = process.env.PORT || 5000; // Initialisation du port avec le fichier env ou 5000 par défaut.
+const PORT = 5000; // Initialisation du port avec le fichier env ou 5000 par défaut.
 
 // Récupération de la vidéo via la route /video
 app.get('/videos/:nom/:code', (req, res) => {
